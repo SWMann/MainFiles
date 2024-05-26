@@ -45,7 +45,7 @@ def findMember(request, cookie):
     print(cookie)
     member = Member.objects.filter(member_DOID=cookie)
 
-    member = list(member)
+    member = list(member.values())
     print(member)
     return JsonResponse(member, safe=False)
 
