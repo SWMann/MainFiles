@@ -3,8 +3,9 @@ from django.contrib.auth.models import User
 from rest_framework import generics
 from .serializers import UserSerializer, NoteSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Note
-
+from .models import Note, Member
+from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse
 
 class NoteListCreate(generics.ListCreateAPIView):
     serializer_class = NoteSerializer
@@ -34,3 +35,19 @@ class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
+
+
+def findMember(request, cookie):
+    print(cookie)
+    member = Member.objects.filter(member_DOID=cookie)
+
+    data = serializers.serialize("json", member)
+    print(data)
+    return JsonResponse(data, safe=False)
+
+def findMemberViaID(request, id):
+    print(id)
+    member = Member.objects.filter(pk=id).values()
+    users_list = list(member)  # important: convert the QuerySet to a list object
+
+    return JsonResponse(users_list, safe=False)

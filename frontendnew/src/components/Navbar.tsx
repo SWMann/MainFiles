@@ -22,8 +22,69 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu.tsx";
 import { Link } from "@radix-ui/themes";
+import { useState, useEffect } from "react";
+import api from "../api";
 
 function Navbar() {
+  const [member, setMember] = useState({});
+  useEffect(() => {
+    getMember();
+  }, []);
+  // Cookies.get('memberDOID')
+
+  const getMember = () => {
+    const url = "/api/member/find/" + "00001-00006-GD";
+    api
+      .get(url)
+      .then((res) => res.data)
+      .then((data) => {
+        data = JSON.parse(data);
+        data = data[0];
+        data = data["fields"];
+        console.log("data")
+        setMember(data);
+
+      })
+      .catch((err) => alert(err));
+  };
+
+  function RankButton(type, rank, game_name) {
+    if (type == "ENL") {
+      return (
+        <Button
+          disabled
+          style={{
+            marginLeft: "auto",
+            maxHeight: 25,
+            borderRadius: 2,
+            border: "black",
+            borderWidth: 20,
+          }}
+        >
+          {rank}. {game_name}
+        </Button>
+      );
+    }
+    if (type == "COF") {
+      return (
+        <Button
+          disabled
+          style={{
+            marginLeft: "auto",
+            maxHeight: 25,
+            borderRadius: 2,
+            border: "black",
+            borderWidth: 20,
+            backgroundColor: "gold",
+            color: "black",
+          }}
+        >
+          {rank}. {game_name}
+        </Button>
+      );
+    }
+  }
+
   return (
     <Menubar style={{ minHeight: 50 }}>
       <MenubarMenu>
@@ -48,27 +109,33 @@ function Navbar() {
             <Link href="/">Upcoming Operations</Link>
             <MenubarShortcut>⌘T</MenubarShortcut>
           </MenubarItem>
-          <MenubarItem>Past Operations</MenubarItem>
+          <MenubarItem>
+            {" "}
+            <Link href="/redirect">Past Operations</Link>
+          </MenubarItem>
           <MenubarSeparator />
           <MenubarItem>Campaigns</MenubarItem>
 
           <MenubarItem>
             {" "}
-            <Link href="/unitmanagment">Statistics</Link>
+            <Link href="/unitmanagment">{member.member_game_name}</Link>
           </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
-      <Button
-        disabled
+      <div
         style={{
-          margin: 20,
+          alignSelf: "stretch",
+          alignItems: "center",
+          display: "flex",
           marginLeft: "auto",
-          fontWeight: "bold",
-          maxHeight: 25,
         }}
       >
-        Cpt. Phili
-      </Button>
+        {RankButton(
+          "COF",
+          "Cpt.",
+          "Phili",
+        )}
+      </div>
       <DropdownMenu>
         <div style={{ margin: 20, marginLeft: "10" }}>
           <DropdownMenuTrigger style={{ paddingTop: 5 }}>

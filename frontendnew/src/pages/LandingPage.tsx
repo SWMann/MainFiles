@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Link } from "lucide-react";
 import { Separator } from "@/components/ui/separator.tsx";
 import D12AForm from "@/components/D-12A_Form.tsx";
@@ -22,12 +21,11 @@ function LandingPage() {
                 <div className="flex flex-col justify-center space-y-4">
                   <div className="space-y-2">
                     <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                      Join ARMA Reforgers premier UNSC Milsim
+                      Join Battlegroup Scarus
                     </h1>
                     <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                      Fight against the United Rebel Front on the sleepy but
-                      deeply divided island of everon on a colony far removed
-                      from the main planets.
+                      ARMA Reforgers first Warhammer 40,000 MILSIM. Fight in the
+                      Emperors name on Land or in the Air.
                     </p>
                   </div>
                   <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -43,7 +41,7 @@ function LandingPage() {
                   alt="Hero"
                   className="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
                   height="550"
-                  src="https://gamingbolt.com/wp-content/uploads/2022/05/Arma-Reforger.jpg"
+                  src="https://i.redd.it/is-there-an-imperial-guard-regiment-more-experienced-in-v0-ihcn32li53fa1.jpg?width=1920&format=pjpg&auto=webp&s=652eaa5d4c79b94837984edee0c77bd32ad24eab"
                   width="550"
                 />
               </div>
@@ -74,8 +72,7 @@ function LandingPage() {
                   </h3>
                 </div>
                 <p className="mt-2 text-gray-500 dark:text-gray-400">
-                  We aim to simulate the United Nations Space Command and all of
-                  entities in as accurate a way as we can.
+                  We aim to simulate dark and gritty reality of war in the 41st millenium in every way possible. Be it through the use of one life operations, challenging enemies or impossible odds.
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-950">
@@ -86,7 +83,7 @@ function LandingPage() {
                   <h3 className="text-lg font-semibold">Flexible Operations</h3>
                 </div>
                 <p className="mt-2 text-gray-500 dark:text-gray-400">
-                  Utilizing our advanced MOS and ORBAT system we utilize the
+                  Utilizing our advanced AMOS and ORBAT system we utilize the
                   benefits of a fixed military structure, without the downsides
                 </p>
               </div>
@@ -124,7 +121,7 @@ function LandingPage() {
           </div>
           <Separator className={"my-20 "}></Separator>
           <h2 className="text-xl font-bold tracking-tighter sm:text-xl md:text-4xl">
-            ONI Leadership
+            Unit Leadership
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
             <div className="flex flex-col items-center space-y-3">
@@ -140,15 +137,12 @@ function LandingPage() {
                 width="120"
               />
               <div className="text-center">
-                <h3 className="text-lg font-semibold">LtCmdr. Brewer</h3>
+                <h3 className="text-lg font-semibold">Cdre. Phili</h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Acting Captain - UNSC Tripoli
+                  Acting Captain - INS-Resolute (FF)
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                  LtCmdr. Brewer is an experienced ARMA Milsim player and has a
-                  huge amount of unit leadership experience from his role
-                  commanding the 75th Ranger Regiment Milsim as well as his
-                  military service.
+                  The Commadore is a veteran of ARMA 3 and Reforger. He leads the unit both in and out of game.
                 </p>
               </div>
             </div>
@@ -291,7 +285,7 @@ function LandingPage() {
       <p className="max-w-[700px] mx-auto text-gray-600 dark:text-gray-400 md:text-xl ">
         When you are ready and have made sure to thoroughly read through {link}{" "}
         before you apply. It goes everything you will need to know before
-        attending UCMB.
+        attending s.
       </p>
 
       <div className={"py-10"}>
