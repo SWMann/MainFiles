@@ -6,7 +6,6 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Note, Member
 from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponse, JsonResponse
-from rest_framework import serializers
 
 
 
@@ -41,12 +40,14 @@ class CreateUserView(generics.CreateAPIView):
 
 
 def findMember(request, cookie):
+
+
     print(cookie)
     member = Member.objects.filter(member_DOID=cookie)
 
-    data = serializers.serialize("json", member)
-    print(data)
-    return JsonResponse(data, safe=False)
+    member = list(member)
+    print(member)
+    return JsonResponse(member, safe=False)
 
 def findMemberViaID(request, id):
     print(id)
