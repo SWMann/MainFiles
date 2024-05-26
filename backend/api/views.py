@@ -6,6 +6,9 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Note, Member
 from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponse, JsonResponse
+from rest_framework import serializers
+
+
 
 class NoteListCreate(generics.ListCreateAPIView):
     serializer_class = NoteSerializer
