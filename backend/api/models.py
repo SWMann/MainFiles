@@ -175,6 +175,7 @@ class Member(models.Model):
     member_desired_MOS_to_replace = models.CharField(choices=memberMOStypes, max_length=10, null=True, blank=True)
     member_commission_type=models.CharField(choices=CommisionType, max_length=10)
     member_astartes = models.CharField(choices=AstartesType, max_length=20)
+    member_linked_user = models.ForeignKey(User, blank=False, null=True, on_delete=models.DO_NOTHING, related_name="User_Model")
 
     def __str__(self):
 

@@ -6,4 +6,5 @@ urlpatterns = [
     path("notes/delete/<int:pk>/", views.NoteDelete.as_view(), name="delete-note"),
     path("member/find/<str:cookie>", views.findMember, name="FindMember"),
     path("member/find/member/<int:id>", views.findMemberViaID, name="FindMember"),
+    path("member/", views.MemberListCreate.as_view(), name="member-list"),
 ]

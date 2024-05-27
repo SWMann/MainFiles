@@ -38,14 +38,14 @@ function Navbar() {
       .get(url)
       .then((res) => res.data)
       .then((data) => {
-        data = JSON.parse(data);
-        data = data[0];
-        data = data["fields"];
-        console.log("data")
+        data = data[0]
+        console.log(data)
+
         setMember(data);
 
       })
       .catch((err) => alert(err));
+    console.log(member)
   };
 
   function RankButton(type, rank, game_name) {
@@ -118,7 +118,7 @@ function Navbar() {
 
           <MenubarItem>
             {" "}
-            <Link href="/unitmanagment">{member.member_game_name}</Link>
+            <Link href="/unitmanagment">Unit</Link>
           </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
@@ -131,9 +131,9 @@ function Navbar() {
         }}
       >
         {RankButton(
-          "COF",
-          "Cpt.",
-          "Phili",
+          member.member_commission_type,
+          member.member_rank,
+          member.member_game_name,
         )}
       </div>
       <DropdownMenu>

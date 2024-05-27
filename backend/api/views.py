@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, NoteSerializer
+from .serializers import UserSerializer, NoteSerializer, MemberSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Note, Member
-from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponse, JsonResponse
 
 
@@ -55,3 +54,20 @@ def findMemberViaID(request, id):
     users_list = list(member)  # important: convert the QuerySet to a list object
 
     return JsonResponse(users_list, safe=False)
+
+
+class MemberListCreate(generics.ListCreateAPIView):
+    serializer_class = MemberSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        if not self.request.user.pk:
+            return None
+        user = self.request.user
+        return Member.objects.filter(member_linked_user=user)
+
+    def perform_create(self, serializer):
+        if serializer.is_valid():
+            serializer.save(member_linked_user=self.request.user)
+        else:
+            print(serializer.errors)
