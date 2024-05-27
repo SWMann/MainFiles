@@ -33,7 +33,7 @@ function Navbar() {
   // Cookies.get('memberDOID')
 
   const getMember = () => {
-    const url = "/api/member/find/" + "00001-00006-GD";
+    const url = "/api/member/";
     api
       .get(url)
       .then((res) => res.data)

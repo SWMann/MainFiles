@@ -6,6 +6,7 @@ import "./App.css";
 import LandingPage from "@/pages/LandingPage.tsx";
 // import Introduction from "@/pages/Introduction";
 import UnitManagment from "@/pages/UnitManagment";
+import Login from "./pages/Login.tsx";
 // test
 function App() {
 
@@ -32,7 +33,8 @@ function App() {
             </ProtectedRoute>
           }
         />
-        {/* <Route path="/login" element={<Login />} />
+         <Route path="/login" element={<Login />} />
+         {/*
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} /> */}
         <Route path="*" element={<LandingPage />}></Route>
