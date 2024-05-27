@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import api from "@/App";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "@/constants";
 import { useState, useEffect } from "react";
-import React, { ReactNode } from "react";
+import  { ReactNode } from "react";
 
 
 
@@ -13,6 +13,8 @@ interface Props {
 }
 
 function ProtectedRoute({ children }: Props) {
+
+    const apitest = api
     const [isAuthorized, setIsAuthorized] = useState(false);
 
     useEffect(() => {
@@ -22,7 +24,8 @@ function ProtectedRoute({ children }: Props) {
     const refreshToken = async () => {
         const refreshToken = localStorage.getItem(REFRESH_TOKEN);
         try {
-            const res = await api.post("/api/token/refresh/", {
+            // @ts-expect-error post given by API
+            const res = await apitest.post("/api/token/refresh/", {
                 refresh: refreshToken,
             });
             if (res.status === 200) {
@@ -44,7 +47,7 @@ function ProtectedRoute({ children }: Props) {
             return;
         }
         const decoded = jwtDecode(token);
-        const tokenExpiration = decoded.exp;
+        const tokenExpiration = decoded.exp || 200;
         const now = Date.now() / 1000;
 
         if (tokenExpiration < now) {

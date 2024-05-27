@@ -25,6 +25,10 @@ import { Link } from "@radix-ui/themes";
 import { useState, useEffect } from "react";
 import api from "../api";
 
+
+
+
+
 function Navbar() {
   const [member, setMember] = useState({});
   useEffect(() => {
@@ -48,7 +52,9 @@ function Navbar() {
     console.log(member)
   };
 
-  function RankButton(type, rank, game_name) {
+
+
+  function RankButton(type:string, rank:string, game_name:string) {
     if (type == "ENL") {
       return (
         <Button
@@ -131,9 +137,9 @@ function Navbar() {
         }}
       >
         {RankButton(
-          member.member_commission_type,
-          member.member_rank,
-          member.member_game_name,
+          member["member_commission_type" as keyof typeof member],
+          member["member_rank" as keyof typeof member],
+          member["member_game_name" as keyof typeof member],
         )}
       </div>
       <DropdownMenu>

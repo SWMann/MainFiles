@@ -3,9 +3,12 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import "../styles/Form.css"
-import LoadingIndicator from "./LoadingIndicator";
+import LoadingIndicator from "@/components/LoadingIndicator";
 
-function Form({ route, method }) {
+
+interface forminterface {route: string, method: string}
+
+function Form( { route, method }: forminterface ) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -13,7 +16,7 @@ function Form({ route, method }) {
 
     const name = method === "login" ? "Login" : "Register";
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
         setLoading(true);
         e.preventDefault();
 
