@@ -13,9 +13,9 @@ interface Props {
 }
 
 function ProtectedRoute({ children }: Props) {
-
-    const apitest = api
-    const [isAuthorized, setIsAuthorized] = useState(false);
+    //console.log(localStorage.getItem(ACCESS_TOKEN))
+    console.log("test")
+    const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
 
     useEffect(() => {
         auth().catch(() => setIsAuthorized(false))
@@ -25,9 +25,10 @@ function ProtectedRoute({ children }: Props) {
         const refreshToken = localStorage.getItem(REFRESH_TOKEN);
         try {
             // @ts-expect-error post given by API
-            const res = await apitest.post("/api/token/refresh/", {
+            const res = await api.post("/api/token/refresh/", {
                 refresh: refreshToken,
             });
+            console.log(res+"test")
             if (res.status === 200) {
                 localStorage.setItem(ACCESS_TOKEN, res.data.access)
                 setIsAuthorized(true)
