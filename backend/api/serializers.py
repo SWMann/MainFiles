@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Note, Member
+from .models import MOS, Note, Member
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -28,3 +28,8 @@ class MemberSerializer(serializers.ModelSerializer):
         fields = "__all__"
         extra_kwargs = {}
 
+class MOSSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MOS
+        fields = "__all__"
+        extra_kwargs = {}

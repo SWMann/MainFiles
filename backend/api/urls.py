@@ -7,4 +7,6 @@ urlpatterns = [
     path("member/find/<str:cookie>", views.findMember, name="FindMember"),
     path("member/find/member/<int:id>", views.findMemberViaID, name="FindMember"),
     path("member/", views.MemberListCreate.as_view(), name="member-list"),
+    path("MOS/<str:MOS>", views.MOSListCreate.as_view(), name="member-list"),
+
 ]

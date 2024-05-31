@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, NoteSerializer, MemberSerializer
+from .serializers import MOSSerializer, UserSerializer, NoteSerializer, MemberSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Note, Member
+from .models import Note, Member, MOS
 from django.http import HttpResponse, JsonResponse
 
 
@@ -71,3 +71,15 @@ class MemberListCreate(generics.ListCreateAPIView):
             serializer.save(member_linked_user=self.request.user)
         else:
             print(serializer.errors)
+
+
+class MOSListCreate(generics.ListCreateAPIView):
+    serializer_class = MOSSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+
+        MOSKey = self.kwargs["MOS"]
+        print(MOSKey)
+        return MOS.objects.filter(pk=MOSKey)
+
